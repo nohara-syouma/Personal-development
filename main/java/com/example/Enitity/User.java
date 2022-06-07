@@ -3,8 +3,11 @@ package com.example.Enitity;
 public class User {
 
     private String loginId;
-    private String password;
+  
+
+	private String password;
     private String name;
+    private Integer role;
 
     public User() {
     }
@@ -38,6 +41,13 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	  public Integer getRole() {
+			return role;
+		}
 
+		public void setRole(Integer role) {
+			this.role = role;
+		}
    
 }

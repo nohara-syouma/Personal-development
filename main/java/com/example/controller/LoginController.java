@@ -45,16 +45,21 @@ public class LoginController {
 		}if(ParamUtil.isNullOrEmpty(pass)){
 			return "login";
 		}  	
-		
 		User user = loginService.login(logid, pass);
 		
 		if(user == null) {		
 			 String errMsg = messageSource.getMessage("select.error", null, Locale.getDefault());
 			 model.addAttribute("msg", errMsg);
 			 return "login";
-		}else {			
+		}else{	
+			Integer role = user.getRole();
+			System.out.println(role);
+			
+			if(role == 1) {
 			model.addAttribute("name", user.getName());
 			return "menu";
+			}
+			return "menu2";
 		}      
     }
 	

@@ -38,10 +38,10 @@
 
     <hr>
 
-    <div class="btn">
-    <a class="basic_btn regist" href="insert">新規登録</a>
-    </div>
-    <p>成功メッセージ</p>
+<!--     <div class="btn"> -->
+<!--     <a class="basic_btn regist" href="insert">新規登録</a> -->
+<!--     </div> -->
+<!--     <p>成功メッセージ</p> -->
     
 <%--     <form method="get" action="search" class="search_container"> --%>
 <!--       <input type="text" size="25" name="search" placeholder="キーワード検索"> -->

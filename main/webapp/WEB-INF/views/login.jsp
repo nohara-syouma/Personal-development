@@ -13,11 +13,11 @@
 </head>
 <body class="login_body">
   <div class="header">
-    <h1 class="site_logo">ECサイト</h1>
+    <h1 class="site_logo">ショッピンッグサイト</h1>
   </div>
 
   <div class="login_form">
-    <img src="./images/logo.png" class="login_logo">
+    <img src="./images/login1.png" class="login_logo">
     <p class="error">
     <c:if test="${not empty msg}">
           	<p>${msg}</p>
