@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.Enitity.Products;
 import com.example.Enitity.User;
 import com.example.controller.form.LoginForm;
 import com.example.service.LoginService;
+import com.example.service.ProductService;
 import com.example.util.ParamUtil;
 
 @Controller
@@ -29,7 +32,16 @@ public class LoginController {
 	 LoginService loginService;
 	 
 	 @Autowired
-		HttpSession session;  
+	 HttpSession session;  
+	 
+	 @Autowired
+		ProductService productService;
+	 
+		@RequestMapping(value="/logout")
+		public String logout(@ModelAttribute("login") LoginForm loginForm) {
+			session.invalidate();
+			return "login";
+		}
 	
 	@RequestMapping("/login")
     public String login(@ModelAttribute("login") LoginForm form, Model model) {
@@ -64,6 +76,9 @@ public class LoginController {
 			System.out.println(role);
 			
 			if(role == 1) {
+				List<Products> list = productService.findAll();
+				
+				model.addAttribute("productList", list);
 			model.addAttribute("name", user.getName());
 			return "menu";
 			}
@@ -87,9 +102,8 @@ public class LoginController {
 		loginService.logininsert(logid, pass);
 		
 		model.addAttribute("msg", "登録完了");
-		
-		
-			return "login";
+				
+		return "login";
 		
 	}
 	

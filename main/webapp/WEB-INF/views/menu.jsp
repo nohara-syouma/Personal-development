@@ -17,7 +17,6 @@
 
     <div class="header">
       <h1 class="site_logo">商品管理システム</h1>
-<!--       <h1 class="site_logo"><a href="login">商品管理システム</a></h1> -->
       
         <form method="get" action="search" class="search_container">
       <input type="text" size="25" name="search" placeholder="キーワード検索">
@@ -30,7 +29,7 @@
           	<p>${user.getName()}</p>
   		  </c:if>
         </p>
-        <form class="logout_form" action="logout.html" method="get">
+        <form class="logout_form" action="logout" method="get">
           <button class="logout_btn" type="submit">
             <img src="images/ドアアイコン.png">ログアウト</button>
         </form>
@@ -43,11 +42,6 @@
     <a class="basic_btn regist" href="insert">新規登録</a>
     </div>
 <!--     <p>成功メッセージ</p> -->
-    
-<%--     <form method="get" action="search" class="search_container"> --%>
-<!--       <input type="text" size="25" name="search" placeholder="キーワード検索"> -->
-<!--       <input type="submit" value="&#xf002"> -->
-<%--     </form> --%>
     
 
     <table>

@@ -33,8 +33,6 @@ public class ProductController {
 	@RequestMapping("/menu")
 	public String search(@ModelAttribute("search")String key, Model model) {
 		
-//		Products products = new Products(null, null, key, null);
-
 		List<Products> list = productService.findAll();
 		
 		model.addAttribute("productList", list);
@@ -75,7 +73,9 @@ public class ProductController {
 
 			}else{
 		 
-		 
+				List<Products> list = productService.findAll();
+				
+				model.addAttribute("productList", list);
 		 
 		 	return "menu";
 		 
