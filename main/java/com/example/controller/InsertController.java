@@ -93,7 +93,7 @@ public class InsertController {
 		User user = (User) session.getAttribute("user");
 		System.out.println(user.getName());
 
-		BuyList buyList = new BuyList(user.getName(),form.getProductId(),form.getCategoryId(),form.getName(),form.getPrice());
+		BuyList buyList = new BuyList(user.getName(),form.getProductId(),form.getCategoryId(),form.getName(),form.getPrice(),form.getImg());
 		
 		insertService.insertbuy(buyList);
 		
@@ -111,7 +111,7 @@ public class InsertController {
 		User user = (User) session.getAttribute("user");
 		System.out.println(user.getName());
 
-		BuyList buyList = new BuyList(user.getName(),form.getProductId(),form.getCategoryId(),form.getName(),form.getPrice());
+		BuyList buyList = new BuyList(user.getName(),form.getProductId(),form.getCategoryId(),form.getName(),form.getPrice(),form.getName());
 		
 		insertService.insertbuy(buyList);
 		

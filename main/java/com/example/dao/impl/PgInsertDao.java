@@ -17,7 +17,7 @@ public class PgInsertDao implements InsertDao{
 	
 	private static final String INSERT = "INSERT INTO products (product_id, category_id, name, price) VALUES(:product_id, :category_id, :name, :price)";
 	
-	private static final String INSERTBUY = "INSERT INTO list (username, product_id, category_id, name, price) VALUES(:username, :product_id, :category_id, :name, :price)";
+	private static final String INSERTBUY = "INSERT INTO list (username, product_id, category_id, name, price,img) VALUES(:username, :product_id, :category_id, :name, :price,:img)";
 	
 
 	 @Autowired
@@ -51,7 +51,8 @@ public class PgInsertDao implements InsertDao{
 	        param.addValue("category_id", buyList.getCategoryId());
 	        param.addValue("name", buyList.getName());
 	        param.addValue("price", buyList.getPrice());
-
+	        param.addValue("img", buyList.getImg());
+	        
 	        jdbcTemplate.update(sql, param);
 	    }
 	    

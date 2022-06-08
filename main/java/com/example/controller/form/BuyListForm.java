@@ -7,8 +7,15 @@ public class BuyListForm {
 	private Integer categoryId;
 	private String name;
 	private Integer price;
+	private String img;
 	
-//	public String getUsername() {
+public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	//	public String getUsername() {
 //		return username;
 //	}
 //	public void setUsername(String username) {

@@ -8,14 +8,23 @@ public class BuyList {
 	private String name;
 	private Integer price;
 	
+	private String img;
+	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public BuyList() {
     }
-	public BuyList(String username,Integer productId,Integer categoryId,String name,Integer price) {
+	public BuyList(String username,Integer productId,Integer categoryId,String name,Integer price,String img) {
 		this.username = username;
 		this.productId = productId;
 		this.categoryId = categoryId;
 		this.name = name;
 		this.price = price;
+		this.img = img;
     }
 	public Integer getPrice() {
 		return price;
