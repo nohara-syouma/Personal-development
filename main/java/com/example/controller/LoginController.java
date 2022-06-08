@@ -2,6 +2,8 @@ package com.example.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class LoginController {
 	 
 	 @Autowired
 	 LoginService loginService;
+	 
+	 @Autowired
+		HttpSession session;  
 	
 	@RequestMapping("/login")
     public String login(@ModelAttribute("login") LoginForm form, Model model) {
@@ -35,6 +40,8 @@ public class LoginController {
 	@RequestMapping(value = "/login", params = "login", method = RequestMethod.GET)
     public String resultlogin(@Validated@ModelAttribute("login") LoginForm form, BindingResult bindingResult, Model model) {
     	
+		
+		
     	String logid = form.getLogId();
     	String pass = form.getPass();
     	
@@ -46,6 +53,7 @@ public class LoginController {
 			return "login";
 		}  	
 		User user = loginService.login(logid, pass);
+		session.setAttribute("user", user);
 		
 		if(user == null) {		
 			 String errMsg = messageSource.getMessage("select.error", null, Locale.getDefault());

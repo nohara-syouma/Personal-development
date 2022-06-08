@@ -25,8 +25,8 @@
       
       <div class="user">
         <p class="user_name">
-        <c:if test="${not empty name}">
-          	<p>${name}</p>
+        <c:if test="${not empty user}">
+          	<p>${user.getName()}</p>
   		  </c:if>
         </p>
         <form class="logout_form" action="logout.html" method="get">
@@ -87,7 +87,7 @@
 <%--             <td>${ product.categoryId }</td> --%>
 			
 			
-            <td><a class="detail_btn" href="./detail">購入</a></td>
+            <td><a class="detail_btn" href="./detail?productId=${ product.productId}">購入</a></td>
            
             
           </tr>

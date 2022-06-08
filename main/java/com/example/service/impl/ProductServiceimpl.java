@@ -26,4 +26,9 @@ public class ProductServiceimpl implements ProductService{
 		return productDao.find(products);
 	}
 	
+	@Override
+	public Products findid(Integer productId){
+		return productDao.findid(productId);
+	}
+	
 }

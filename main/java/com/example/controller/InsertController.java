@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +17,19 @@ import com.example.Enitity.User;
 import com.example.controller.form.BuyListForm;
 import com.example.controller.form.InsertForm;
 import com.example.service.InsertService;
+import com.example.service.ProductService;
 
 @Controller
 public class InsertController {
 	
 	@Autowired
 	InsertService insertService;
+	
+	@Autowired
+	ProductService productService;
+	
+	@Autowired
+	HttpSession session;
 	
 	@RequestMapping("/insert")
     public String insert(@ModelAttribute("insert") InsertForm form, Model model) {	
@@ -57,14 +66,19 @@ public class InsertController {
 	
 	@RequestMapping("/detail")
 	public String buy(@ModelAttribute("detail")BuyListForm form,Model model) {
+		System.out.println(form.getProductId());
 		
+		Products products = productService.findid(form.getProductId());
+		
+		model.addAttribute("productdetail", products);
 		return "detail";
 	}
 	
 	@RequestMapping(value = "/detail", params = "buy", method = RequestMethod.GET)
 	public String resultbuy(@Validated@ModelAttribute("detail") BuyListForm form, BindingResult bindingResult, Model model) {
 		System.out.println("通った");
-		User user = new User();
+		
+		User user = (User) session.getAttribute("user");
 		System.out.println(user.getName());
 
 		BuyList buyList = new BuyList(user.getName(),form.getProductId(),form.getCategoryId(),form.getName(),form.getPrice());

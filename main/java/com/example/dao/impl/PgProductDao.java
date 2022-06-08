@@ -21,7 +21,8 @@ public class PgProductDao implements ProductDao{
 	 private static final String ORDER_BY = " ORDER BY product_id";
 	 
 	 private static final String SQL_SELECT_FIND = "SELECT * FROM products WHERE";
-	
+	 private static final String SQL_SELECT_FINDID = "SELECT * FROM products WHERE product_id = :product_id";
+	 
 	 @Autowired
 	 private NamedParameterJdbcTemplate jdbcTemplate;
 	 
@@ -65,5 +66,16 @@ public class PgProductDao implements ProductDao{
 			return resultList.isEmpty() ? null : resultList;
 		 
 	    }
+	 
+	 @Override
+	 public Products findid(Integer productId) {
+		 String sql = SQL_SELECT_FINDID;
+		 
+		    MapSqlParameterSource param = new MapSqlParameterSource();
+	        param.addValue("product_id", productId);
+		 
+	        List<Products> resultList = jdbcTemplate.query(sql, param, new BeanPropertyRowMapper<Products>(Products.class));
 
+	        return resultList.isEmpty() ? null : resultList.get(0);
+	 }
 }

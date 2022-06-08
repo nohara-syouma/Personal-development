@@ -9,5 +9,7 @@ public interface ProductService {
 	public List<Products> findAll();
 	
 	public List<Products> find(Products products);
+	
+	public Products findid(Integer productId);
 
 }

@@ -20,8 +20,8 @@
     <h1 class="site_logo"><a href="menu">商品管理システム</a></h1>
     <div class="user">
       <p class="user_name">
-      <c:if test="${not empty name}">
-          	<p>${name}</p>
+      <c:if test="${not empty user}">
+          	<p>${user.getName()}</p>
   		  </c:if>
       </p>
       <form class="logout_form" action="logout" method="get">
@@ -43,19 +43,19 @@
           <p class="error">エラーメッセージ</p>
           <div>
             <label>商品ID</label>
-            <form:input type="text" path="productId" class="base-text"/>
+            <form:input type="text" path="productId"  class="base-text"/>
           </div>
           <div>
             <label>商品名</label>
-            <form:input type="text" path="name" class="base-text"/>
+            <form:input type="text" path="name" value="${ productdetail.name }" class="base-text"/>
           </div>
           <div>
             <label>単価</label>
-            <form:input type="text" path="price" class="base-text"/>
+            <form:input type="text" path="price" value="${ productdetail.price }" class="base-text"/>
           </div>
           <div>
             <label>カテゴリ</label>
-            <form:input type="text" path="categoryId" class="base-text"/>
+            <form:input type="text" path="categoryId" value="${ productdetail.categoryId }" class="base-text"/>
           </div>
           <div>
             <label>商品説明</label>
