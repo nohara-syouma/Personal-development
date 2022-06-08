@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.Enitity.Products;
-import com.example.controller.form.ProductForm;
+import com.example.service.InsertService;
 import com.example.service.ProductService;
 
 @Controller
@@ -18,9 +18,12 @@ public class ProductController {
 
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	InsertService insertService;
 
 	@RequestMapping("/menu")
-	public String search(@ModelAttribute("search") ProductForm form, Model model) {
+	public String search(@ModelAttribute("search") Model model) {
 
 		return "menu";
 	}
@@ -37,5 +40,7 @@ public class ProductController {
 		return "menu";
 
 	}
+	
+
 
 }

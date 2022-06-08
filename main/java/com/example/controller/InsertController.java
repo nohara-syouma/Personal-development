@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.Enitity.BuyList;
 import com.example.Enitity.Products;
+import com.example.Enitity.User;
+import com.example.controller.form.BuyListForm;
 import com.example.controller.form.InsertForm;
 import com.example.service.InsertService;
 
@@ -50,6 +53,25 @@ public class InsertController {
 		model.addAttribute("msg", "登録が完了しました");
 		
 		return "insert";	
+	}
+	
+	@RequestMapping("/detail")
+	public String buy(@ModelAttribute("detail")BuyListForm form,Model model) {
+		
+		return "detail";
+	}
+	
+	@RequestMapping(value = "/detail", params = "buy", method = RequestMethod.GET)
+	public String resultbuy(@Validated@ModelAttribute("detail") BuyListForm form, BindingResult bindingResult, Model model) {
+		System.out.println("通った");
+		User user = new User();
+		System.out.println(user.getName());
+
+		BuyList buyList = new BuyList(user.getName(),form.getProductId(),form.getCategoryId(),form.getName(),form.getPrice());
+		
+		insertService.insertbuy(buyList);
+		return "detail";
+
 	}
 	
 

@@ -16,7 +16,7 @@
   <div id="app">
 
     <div class="header">
-      <h1 class="site_logo"><a href="menu.html">商品管理システム</a></h1>
+      <h1 class="site_logo"><a href="login">商品管理システム</a></h1>
       
         <form method="get" action="search" class="search_container">
       <input type="text" size="25" name="search" placeholder="キーワード検索">
@@ -41,7 +41,7 @@
     <div class="btn">
     <a class="basic_btn regist" href="insert">新規登録</a>
     </div>
-    <p>成功メッセージ</p>
+<!--     <p>成功メッセージ</p> -->
     
 <%--     <form method="get" action="search" class="search_container"> --%>
 <!--       <input type="text" size="25" name="search" placeholder="キーワード検索"> -->
@@ -56,26 +56,27 @@
   		  </c:if>件
   		  </p>
   		  </div>
-        <div class="order">
-          <select class="base-text">
-            <option>並び替え</option>
-            <option>商品ID</option>
-            <option>カテゴリ</option>
-            <option>単価：安い順</option>
-            <option>単価：高い順</option>
-            <option>登録日：古い順</option>
-            <option>登録日：新しい順</option>
-          </select>
-        </div>
+<!--         <div class="order"> -->
+<!--           <select class="base-text"> -->
+<!--             <option>並び替え</option> -->
+<!--             <option>商品ID</option> -->
+<!--             <option>カテゴリ</option> -->
+<!--             <option>単価：安い順</option> -->
+<!--             <option>単価：高い順</option> -->
+<!--             <option>登録日：古い順</option> -->
+<!--             <option>登録日：新しい順</option> -->
+<!--           </select> -->
+<!--         </div> -->
       <thead>
         <tr>
           <th>商品ID</th>
           <th>商品名</th>
           <th>単価</th>
-          <th>カテゴリ</th>
-          <th>詳細</th>
+<!--           <th>カテゴリ</th> -->
+          <th>購入</th>
         </tr>
       </thead>
+      
       <tbody>
         
         <c:forEach var="product" items="${productList}">
@@ -83,12 +84,17 @@
             <td>${ product.productId}</td>
             <td>${ product.name }</td>
             <td>${ product.price }</td>
-            <td>${ product.categoryId }</td>
-            <td><a class="detail_btn" href="./detail.html">詳細</a></td>
+<%--             <td>${ product.categoryId }</td> --%>
+			
+			
+            <td><a class="detail_btn" href="./detail">購入</a></td>
+           
+            
           </tr>
           </c:forEach>
         
       </tbody>
+       
     </table>
   </div>
   <footer></footer>

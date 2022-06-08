@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.example.Enitity.BuyList;
 import com.example.Enitity.Products;
 import com.example.dao.InsertDao;
 
@@ -13,6 +14,7 @@ public class PgInsertDao implements InsertDao{
 	
 	private static final String INSERT = "INSERT INTO products (product_id, category_id, name, price) VALUES(:product_id, :category_id, :name, :price)";
 	
+	private static final String INSERTBUY = "INSERT INTO list (username, product_id, category_id, name, price) VALUES(:username, :product_id, :category_id, :name, :price)";
 	 @Autowired
 	 private NamedParameterJdbcTemplate jdbcTemplate;
 	 
@@ -25,6 +27,20 @@ public class PgInsertDao implements InsertDao{
 	        param.addValue("category_id", product.getCategoryId());
 	        param.addValue("name", product.getName());
 	        param.addValue("price", product.getPrice());
+
+	        jdbcTemplate.update(sql, param);
+	    }
+	    
+	    @Override
+	    public void insertbuy(BuyList buyList) {
+	        String sql = INSERTBUY;
+
+	        MapSqlParameterSource param = new MapSqlParameterSource();
+	        param.addValue("username", buyList.getPrice());
+	        param.addValue("product_id", buyList.getProductId());
+	        param.addValue("category_id", buyList.getCategoryId());
+	        param.addValue("name", buyList.getName());
+	        param.addValue("price", buyList.getPrice());
 
 	        jdbcTemplate.update(sql, param);
 	    }
