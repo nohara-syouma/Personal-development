@@ -16,7 +16,8 @@
   <div id="app">
 
     <div class="header">
-      <h1 class="site_logo"><a href="login">商品管理システム</a></h1>
+      <h1 class="site_logo">商品管理システム</h1>
+<!--       <h1 class="site_logo"><a href="login">商品管理システム</a></h1> -->
       
         <form method="get" action="search" class="search_container">
       <input type="text" size="25" name="search" placeholder="キーワード検索">

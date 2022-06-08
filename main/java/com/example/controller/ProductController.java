@@ -1,15 +1,20 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.Enitity.Products;
+import com.example.controller.form.InsertForm;
 import com.example.service.InsertService;
 import com.example.service.ProductService;
 
@@ -21,9 +26,12 @@ public class ProductController {
 	
 	@Autowired
 	InsertService insertService;
+	
+	@Autowired
+    MessageSource messageSource;
 
 	@RequestMapping("/menu")
-	public String search(@ModelAttribute("search") Model model) {
+	public String search(@ModelAttribute("search")String key, Model model) {
 		
 //		Products products = new Products(null, null, key, null);
 
@@ -46,6 +54,33 @@ public class ProductController {
 		return "menu";
 
 	}
+	
+	@RequestMapping(value = "/detail",params = "delete", method = RequestMethod.GET)
+	public String insert(@Validated @ModelAttribute("detail") InsertForm form, BindingResult bindingResult, Model model) {
+		
+//		if (bindingResult.hasErrors()) {
+//			
+//			
+//            return "delete";
+//        }
+		
+		 Products products = new Products(form.getProductId(),form.getCategoryId(),form.getName(),form.getPrice());
+		 int product = productService.delete(products);
+		 
+		 if (product == 0) {
+				String errMsg = messageSource.getMessage("select.error", null, Locale.getDefault());
+	            model.addAttribute("msg", errMsg);
+				
+				return "delete";
+
+			}else{
+		 
+		 
+		 
+		 	return "menu";
+		 
+			}
+		}
 	
 
 

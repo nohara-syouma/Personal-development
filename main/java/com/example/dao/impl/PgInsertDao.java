@@ -18,6 +18,8 @@ public class PgInsertDao implements InsertDao{
 	private static final String INSERT = "INSERT INTO products (product_id, category_id, name, price) VALUES(:product_id, :category_id, :name, :price)";
 	
 	private static final String INSERTBUY = "INSERT INTO list (username, product_id, category_id, name, price) VALUES(:username, :product_id, :category_id, :name, :price)";
+	
+
 	 @Autowired
 	 private NamedParameterJdbcTemplate jdbcTemplate;
 	 
@@ -52,5 +54,7 @@ public class PgInsertDao implements InsertDao{
 
 	        jdbcTemplate.update(sql, param);
 	    }
+	    
+
 
 }

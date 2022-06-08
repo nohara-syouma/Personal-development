@@ -23,6 +23,8 @@ public class PgProductDao implements ProductDao{
 	 private static final String SQL_SELECT_FIND = "SELECT * FROM products WHERE";
 	 private static final String SQL_SELECT_FINDID = "SELECT * FROM products WHERE product_id = :product_id";
 	 
+	 private static final String DELETE = "DELETE FROM products WHERE product_id = :product_id";
+	 
 	 @Autowired
 	 private NamedParameterJdbcTemplate jdbcTemplate;
 	 
@@ -78,4 +80,16 @@ public class PgProductDao implements ProductDao{
 
 	        return resultList.isEmpty() ? null : resultList.get(0);
 	 }
+	 
+		public int delete(Products products) {
+			
+			MapSqlParameterSource param = new MapSqlParameterSource();
+			
+			param.addValue("product_id",products.getProductId());
+			
+			String sql = DELETE;
+			
+			return jdbcTemplate.update(sql, param);
+			
+		}
 }

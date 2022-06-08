@@ -68,9 +68,11 @@
         <div>
           <div class="btns">
            <input type="button" name ="buy" onclick="openModal()" value="購入" class="basic_btn"/>
-<!--             <input type="button" onclick="openModal()" value="削除" class="basic_btn"> -->
+<!--             <input type="button" name ="delete" onclick="openModal()" value="削除" class="basic_btn"> -->
 <!--             <input type="button" onclick="location.href='./updateInput.html'" value="編集" class="basic_btn"> -->
-<!--             <input type="button" onclick="location.href='./menu.html'" value="戻る" class="cancel_btn"> -->
+<!--             <input type="button" onclick="location.href='./menu'" value="戻る" class="cancel_btn"> -->
+					<form:button name="delete">削除</form:button>
+					<a href="menu" class="cancel_btn">戻る</a>
           </div>
           <div id="modal">
             <p class="modal_message">購入しますか？</p>

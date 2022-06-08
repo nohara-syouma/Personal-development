@@ -31,4 +31,9 @@ public class ProductServiceimpl implements ProductService{
 		return productDao.findid(productId);
 	}
 	
+	@Override
+    public int delete(Products products) {
+        return productDao.delete(products);
+    }
+	
 }

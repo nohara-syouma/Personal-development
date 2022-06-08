@@ -11,5 +11,7 @@ public interface ProductDao {
 	public List<Products> find(Products products);
 	
 	public Products findid(Integer productId);
+	
+	public int delete(Products products);
 
 }
