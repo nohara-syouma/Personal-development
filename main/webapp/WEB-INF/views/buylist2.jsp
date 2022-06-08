@@ -16,12 +16,12 @@
   <div id="app">
 
     <div class="header">
-      <h1 class="site_logo">ユーザーmenu2</h1>
+      <h1 class="site_logo"><a href="menu2">ユーザー 購入完了 購入履歴</a></h1>
       
-        <form method="get" action="search" class="search_container">
-      <input type="text" size="25" name="search" placeholder="キーワード検索">
-      <input type="submit" value="&#xf002">
-    </form>
+<%--         <form method="get" action="buylist" class="search_container"> --%>
+<!--       <input type="text" size="25" name="search" placeholder="キーワード検索"> -->
+<!--       <input type="submit" value="&#xf002"> -->
+<%--     </form> --%>
       
       <div class="user">
         <p class="user_name">
@@ -42,10 +42,6 @@
 <!--     <a class="basic_btn regist" href="insert">新規登録</a> -->
 <!--     </div> -->
 <!--     <p>成功メッセージ</p> -->
-
-	<div class="btn">
-    <a class="basic_btn regist" href="buylist2">購入履歴</a>
-    </div>
     
 
     <table>
@@ -72,7 +68,7 @@
           <th>商品名</th>
           <th>単価</th>
 <!--           <th>カテゴリ</th> -->
-          <th>購入</th>
+          <th>再購入</th>
         </tr>
       </thead>
       
@@ -86,7 +82,7 @@
 <%--             <td>${ product.categoryId }</td> --%>
 			
 			
-            <td><a class="detail_btn" href="./detailuser?productId=${ product.productId}">購入</a></td>
+            <td><a class="detail_btn" href="./detailuser?productId=${ product.productId}">再購入</a></td>
            
             
           </tr>

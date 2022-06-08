@@ -2,6 +2,7 @@ package com.example.service;
 
 import java.util.List;
 
+import com.example.Enitity.BuyList;
 import com.example.Enitity.Products;
 
 public interface ProductService {
@@ -13,5 +14,7 @@ public interface ProductService {
 	public Products findid(Integer productId);
 	
 	public int delete(Products products);
+	
+	public List<BuyList> finduserlist();
 
 }

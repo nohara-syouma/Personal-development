@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.Enitity.BuyList;
 import com.example.Enitity.Products;
 import com.example.dao.ProductDao;
 import com.example.service.ProductService;
@@ -34,6 +35,11 @@ public class ProductServiceimpl implements ProductService{
 	@Override
     public int delete(Products products) {
         return productDao.delete(products);
+    }
+	
+	@Override
+	public List<BuyList> finduserlist() {
+        return productDao.finduserlist();
     }
 	
 }

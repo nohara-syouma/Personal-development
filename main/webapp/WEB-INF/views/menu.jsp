@@ -41,6 +41,10 @@
     <div class="btn">
     <a class="basic_btn regist" href="insert">新規登録</a>
     </div>
+    
+    <div class="btn">
+    <a class="basic_btn regist" href="buylist">購入履歴</a>
+    </div>
 <!--     <p>成功メッセージ</p> -->
     
 

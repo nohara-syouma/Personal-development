@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +76,16 @@ public class InsertController {
 		return "detail";
 	}
 	
+	@RequestMapping("/detailuser")
+	public String buyuser(@ModelAttribute("detail")BuyListForm form,Model model) {
+		System.out.println(form.getProductId());
+		
+		Products products = productService.findid(form.getProductId());
+		
+		model.addAttribute("productdetail", products);
+		return "detailuser";
+	}
+	
 	@RequestMapping(value = "/detail", params = "buy", method = RequestMethod.GET)
 	public String resultbuy(@Validated@ModelAttribute("detail") BuyListForm form, BindingResult bindingResult, Model model) {
 		System.out.println("通った");
@@ -84,7 +96,29 @@ public class InsertController {
 		BuyList buyList = new BuyList(user.getName(),form.getProductId(),form.getCategoryId(),form.getName(),form.getPrice());
 		
 		insertService.insertbuy(buyList);
-		return "detail";
+		
+		List<BuyList> list = productService.finduserlist();
+		System.out.println(list);
+		model.addAttribute("productList", list);
+		return "buylist";
+
+	}
+	
+	@RequestMapping(value = "/detailuser", params = "buy", method = RequestMethod.GET)
+	public String resultbuyuser(@Validated@ModelAttribute("detail") BuyListForm form, BindingResult bindingResult, Model model) {
+		System.out.println("通った");
+		
+		User user = (User) session.getAttribute("user");
+		System.out.println(user.getName());
+
+		BuyList buyList = new BuyList(user.getName(),form.getProductId(),form.getCategoryId(),form.getName(),form.getPrice());
+		
+		insertService.insertbuy(buyList);
+		
+		List<BuyList> list = productService.finduserlist();
+		System.out.println(list);
+		model.addAttribute("productList", list);
+		return "buylist";
 
 	}
 }

@@ -3,6 +3,8 @@ package com.example.controller;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.Enitity.BuyList;
 import com.example.Enitity.Products;
+import com.example.controller.form.BuyListForm;
 import com.example.controller.form.InsertForm;
 import com.example.service.InsertService;
 import com.example.service.ProductService;
@@ -29,6 +33,9 @@ public class ProductController {
 	
 	@Autowired
     MessageSource messageSource;
+	
+	@Autowired
+	HttpSession session;
 
 	@RequestMapping("/menu")
 	public String search(@ModelAttribute("search")String key, Model model) {
@@ -38,6 +45,36 @@ public class ProductController {
 		model.addAttribute("productList", list);
 
 		return "menu";
+	}
+	
+	@RequestMapping("/menu2")
+	public String search2(@ModelAttribute("search")String key, Model model) {
+		
+		List<Products> list = productService.findAll();
+		
+		model.addAttribute("productList", list);
+
+		return "menu2";
+	}
+	
+	@RequestMapping("/buylist")
+	public String buylist(@ModelAttribute("buylist")BuyListForm form, Model model) {
+		
+		List<BuyList> list = productService.finduserlist();
+		System.out.println(list);
+		model.addAttribute("productList", list);
+
+		return "buylist";
+	}
+	
+	@RequestMapping("/buylist2")
+	public String buylist2(@ModelAttribute("buylist")BuyListForm form, Model model) {
+		
+		List<BuyList> list = productService.finduserlist();
+		System.out.println(list);
+		model.addAttribute("productList", list);
+
+		return "buylist2";
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)

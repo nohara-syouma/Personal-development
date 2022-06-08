@@ -82,6 +82,10 @@ public class LoginController {
 			model.addAttribute("name", user.getName());
 			return "menu";
 			}
+			List<Products> list = productService.findAll();
+//			System.out.println("menu2");
+			model.addAttribute("productList", list);
+			model.addAttribute("name", user.getName());
 			return "menu2";
 		}      
     }
