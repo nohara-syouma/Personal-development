@@ -38,6 +38,11 @@ public class ProductServiceimpl implements ProductService{
     }
 	
 	@Override
+	public int update(Products products) {
+		return productDao.update(products);
+	}
+	
+	@Override
 	public List<BuyList> finduserlist() {
         return productDao.finduserlist();
     }

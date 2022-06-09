@@ -14,7 +14,7 @@
 <body>
 
   <div class="header">
-    <h1 class="site_logo"><a href="menu">商品管理システム</a></h1>
+    <h1 class="site_logo"><a href="menu">商品登録</a></h1>
     <div class="user">
       <p class="user_name">
       <c:if test="${not empty user}">

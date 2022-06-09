@@ -105,6 +105,8 @@ public class InsertController {
 
 	}
 	
+	
+	
 	@RequestMapping(value = "/detailuser", params = "buy", method = RequestMethod.GET)
 	public String resultbuyuser(@Validated@ModelAttribute("detail") BuyListForm form, BindingResult bindingResult, Model model) {
 		System.out.println("通った");

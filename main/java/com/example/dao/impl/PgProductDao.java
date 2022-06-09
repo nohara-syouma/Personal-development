@@ -31,6 +31,8 @@ public class PgProductDao implements ProductDao{
 	 
 	 private static final String DELETE = "DELETE FROM products WHERE product_id = :product_id";
 	 
+	 private static final String UPDATE = "UPDATE products SET category_id = :category_id, name = :name, price = :price, img = :img WHERE product_id = :product_id";
+	 
 	 @Autowired
 	 private NamedParameterJdbcTemplate jdbcTemplate;
 	 
@@ -115,6 +117,23 @@ public class PgProductDao implements ProductDao{
 			String sql = DELETE;
 			
 			return jdbcTemplate.update(sql, param);
+			
+		}
+		
+		public int update(Products products) {
+			
+			MapSqlParameterSource param = new MapSqlParameterSource();
+			
+			param.addValue("product_id",products.getProductId());
+			param.addValue("category_id",products.getCategoryId());
+			param.addValue("name",products.getName());
+			param.addValue("price",products.getPrice());
+			param.addValue("img",products.getImg());
+			
+			String sql = UPDATE;
+			
+			return jdbcTemplate.update(sql, param);
+			
 			
 		}
 }

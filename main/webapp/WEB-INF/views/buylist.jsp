@@ -16,7 +16,7 @@
   <div id="app">
 
     <div class="header">
-      <h1 class="site_logo"><a href="menu">購入完了 購入履歴</a></h1>
+      <h1 class="site_logo"><a href="menu">管理者 購入完了 購入履歴</a></h1>
       
 <%--         <form method="get" action="buylist" class="search_container"> --%>
 <!--       <input type="text" size="25" name="search" placeholder="キーワード検索"> -->

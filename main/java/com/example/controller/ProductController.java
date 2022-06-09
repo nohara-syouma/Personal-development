@@ -119,6 +119,33 @@ public class ProductController {
 			}
 		}
 	
+	@RequestMapping(value = "/detail",params = "update", method = RequestMethod.GET)
+	public String update(@Validated @ModelAttribute("detail") InsertForm form, BindingResult bindingResult, Model model) {
+		
+//		if (bindingResult.hasErrors()) {
+//			
+//			
+//            return "delete";
+//        }
+		
+		 Products products = new Products(form.getProductId(),form.getCategoryId(),form.getName(),form.getPrice(),form.getImg());
+		 int product = productService.update(products);
+		 
+		 if (product == 0) {
+				String errMsg = messageSource.getMessage("select.error", null, Locale.getDefault());
+	            model.addAttribute("msg", errMsg);
+				
+				return "update";
 
+			}else{
+		 
+				List<Products> list = productService.findAll();
+				
+				model.addAttribute("productList", list);
+		 
+		 	return "menu";
+		 
+			}
+		}
 
 }

@@ -13,7 +13,7 @@
 </head>
 <body class="login_body">
   <div class="header">
-    <h1 class="site_logo">ショッピンッグサイト</h1>
+    <h1 class="site_logo">ダーツショッピングサイト</h1>
   </div>
 
   <div class="login_form">

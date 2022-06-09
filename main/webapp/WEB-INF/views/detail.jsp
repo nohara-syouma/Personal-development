@@ -17,7 +17,7 @@
 
 
   <div class="header">
-    <h1 class="site_logo"><a href="menu">商品管理システム</a></h1>
+    <h1 class="site_logo"><a href="menu">管理者ダーツショッピング</a></h1>
     <div class="user">
       <p class="user_name">
       <c:if test="${not empty user}">
@@ -76,6 +76,7 @@
 <!--             <input type="button" onclick="location.href='./updateInput.html'" value="編集" class="basic_btn"> -->
 <!--             <input type="button" onclick="location.href='./menu'" value="戻る" class="cancel_btn"> -->
 					<form:button name="delete">削除</form:button>
+					<form:button name="update">編集</form:button>
 					<a href="menu" class="cancel_btn">戻る</a>
           </div>
           <div id="modal">
