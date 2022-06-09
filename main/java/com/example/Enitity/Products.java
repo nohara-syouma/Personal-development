@@ -28,6 +28,14 @@ public class Products{
 		this.categoryId = categoryId;
 		this.name = name;
 		this.price = price;
+    }
+	
+	public Products(Integer productId,Integer categoryId,String name,Integer price,String img) {
+		this.productId = productId;
+		this.categoryId = categoryId;
+		this.name = name;
+		this.price = price;
+		this.img = img;
 		
     }
 	

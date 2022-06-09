@@ -36,7 +36,7 @@
   <div class="update">
     <div class="form_body">
       <div class="img_block">
-        <img src="images/マッキー.png" class="product_img"><br>
+        <img src="images/${ productdetail.img}" class="product_img"><br>
       </div>
       <form:form action="detail" method="get" modelAttribute="detail">
         <fieldset class="label-130 product_block">

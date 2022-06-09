@@ -15,7 +15,7 @@ import com.example.dao.InsertDao;
 @Repository
 public class PgInsertDao implements InsertDao{
 	
-	private static final String INSERT = "INSERT INTO products (product_id, category_id, name, price) VALUES(:product_id, :category_id, :name, :price)";
+	private static final String INSERT = "INSERT INTO products (product_id, category_id, name, price, img) VALUES(:product_id, :category_id, :name, :price ,:img)";
 	
 	private static final String INSERTBUY = "INSERT INTO list (username, product_id, category_id, name, price,img) VALUES(:username, :product_id, :category_id, :name, :price,:img)";
 	
@@ -35,6 +35,7 @@ public class PgInsertDao implements InsertDao{
 	        param.addValue("category_id", product.getCategoryId());
 	        param.addValue("name", product.getName());
 	        param.addValue("price", product.getPrice());
+	        param.addValue("img", product.getImg());
 
 	        jdbcTemplate.update(sql, param);
 	    }
@@ -52,6 +53,9 @@ public class PgInsertDao implements InsertDao{
 	        param.addValue("name", buyList.getName());
 	        param.addValue("price", buyList.getPrice());
 	        param.addValue("img", buyList.getImg());
+	        
+	        System.out.println(buyList.getImg());
+	        System.out.println("okだよ");
 	        
 	        jdbcTemplate.update(sql, param);
 	    }

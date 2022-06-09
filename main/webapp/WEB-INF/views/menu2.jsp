@@ -68,7 +68,7 @@
 <!--         </div> -->
       <thead>
         <tr>
-          <th>商品ID</th>
+          <th>商品</th>
           <th>商品名</th>
           <th>単価</th>
 <!--           <th>カテゴリ</th> -->
@@ -80,7 +80,7 @@
         
         <c:forEach var="product" items="${productList}">
           <tr>
-            <td>${ product.productId}</td>
+            <td><img src="images/${ product.img }"/></td>
             <td>${ product.name }</td>
             <td>${ product.price }</td>
 <%--             <td>${ product.categoryId }</td> --%>

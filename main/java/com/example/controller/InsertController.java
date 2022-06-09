@@ -45,6 +45,7 @@ public class InsertController {
 		Integer categoryid = form.getCategoryId();
 		String name = form.getName();
 		Integer price = form.getPrice();
+		String img = form.getImg();
 		
 		System.out.println(productid);
 		System.out.println(categoryid);
@@ -57,7 +58,7 @@ public class InsertController {
             return "insert";
         }
 		
-		Products products = new Products(productid, categoryid,name, price);
+		Products products = new Products(productid, categoryid,name, price,img);
 		
 		insertService.insert(products);
 		
@@ -111,14 +112,14 @@ public class InsertController {
 		User user = (User) session.getAttribute("user");
 		System.out.println(user.getName());
 
-		BuyList buyList = new BuyList(user.getName(),form.getProductId(),form.getCategoryId(),form.getName(),form.getPrice(),form.getName());
+		BuyList buyList = new BuyList(user.getName(),form.getProductId(),form.getCategoryId(),form.getName(),form.getPrice(),form.getImg());
 		
 		insertService.insertbuy(buyList);
 		
 		List<BuyList> list = productService.finduserlist();
 		System.out.println(list);
 		model.addAttribute("productList", list);
-		return "buylist";
+		return "buylist2";
 
 	}
 }

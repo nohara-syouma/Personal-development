@@ -16,6 +16,16 @@ public class InsertForm {
 	
 	@NotNull
 	private Integer price;
+	
+	private String img;
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
 
 	public Integer getProductId() {
 		return productId;
@@ -48,5 +58,6 @@ public class InsertForm {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
+
 
 }

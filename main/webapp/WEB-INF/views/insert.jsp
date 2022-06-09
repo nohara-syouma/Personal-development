@@ -16,7 +16,10 @@
   <div class="header">
     <h1 class="site_logo"><a href="menu">商品管理システム</a></h1>
     <div class="user">
-      <p class="user_name">佐藤さん、こんにちは</p>
+      <p class="user_name">
+      <c:if test="${not empty user}">
+          	<p>${user.getName()}</p>
+  		  </c:if></p>
       <form class="logout_form" action="logout" method="get">
         <button class="logout_btn" type="submit">
           <img src="images/ドアアイコン.png">ログアウト</button>
@@ -73,7 +76,7 @@
           </div>
           <div>
             <label>画像</label>
-            <input type="file" name="file">
+            <form:input type="text" path="img"/>
             <span class="error">エラーメッセージ</span>
           </div>
         </fieldset>

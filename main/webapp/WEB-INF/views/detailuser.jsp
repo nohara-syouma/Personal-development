@@ -58,6 +58,10 @@
             <form:input type="text" path="categoryId" value="${ productdetail.categoryId }" class="base-text"/>
           </div>
           <div>
+            <label>画像</label>
+            <form:input type="text" path="img" value="${ productdetail.img }" class="base-text"/>
+          </div>
+          <div>
             <label>商品説明</label>
             <textarea name="description" readonly class="base-text" style="background-color: rgb(209, 209, 209);">
 ゼブラ株式会社
