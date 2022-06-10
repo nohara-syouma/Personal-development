@@ -24,112 +24,97 @@ import com.example.util.ParamUtil;
 
 @Controller
 public class LoginController {
-	
-	 @Autowired
-	 MessageSource messageSource;
-	 
-	 @Autowired
-	 LoginService loginService;
-	 
-	 @Autowired
-	 HttpSession session;  
-	 
-//	 @Autowired
-//	 HttpSession session1;
-//	 
-//	 @Autowired
-//	 HttpSession session2;
-	 
-	 @Autowired
-		ProductService productService;
-	 
-		@RequestMapping(value="/logout")
-		public String logout(@ModelAttribute("login") LoginForm loginForm) {
-			session.invalidate();
+
+	@Autowired
+	MessageSource messageSource;
+
+	@Autowired
+	LoginService loginService;
+
+	@Autowired
+	HttpSession session;
+
+	@Autowired
+	ProductService productService;
+
+	@RequestMapping(value = "/logout")
+	public String logout(@ModelAttribute("login") LoginForm loginForm) {
+		session.invalidate();
+		return "login";
+	}
+
+	@RequestMapping("/login")
+	public String login(@ModelAttribute("login") LoginForm form, Model model) {
+
+		return "login";
+	}
+
+	@RequestMapping(value = "/login", params = "login", method = RequestMethod.GET)
+	public String resultlogin(@Validated @ModelAttribute("login") LoginForm form, BindingResult bindingResult,
+			Model model) {
+
+		String logid = form.getLogId();
+		String pass = form.getPass();
+
+		if (ParamUtil.isNullOrEmpty(logid) && ParamUtil.isNullOrEmpty(pass)) {
+			return "login";
+		} else if (ParamUtil.isNullOrEmpty(logid)) {
 			return "login";
 		}
-	
-	@RequestMapping("/login")
-    public String login(@ModelAttribute("login") LoginForm form, Model model) {
-    	
-        return "login";
-    }
-	
-	@RequestMapping(value = "/login", params = "login", method = RequestMethod.GET)
-    public String resultlogin(@Validated@ModelAttribute("login") LoginForm form, BindingResult bindingResult, Model model) {
-    	
-		
-		
-    	String logid = form.getLogId();
-    	String pass = form.getPass();
-    	
-    	if (ParamUtil.isNullOrEmpty(logid) && ParamUtil.isNullOrEmpty(pass)) {		
-			return "login";			
-		}else if(ParamUtil.isNullOrEmpty(logid)) {
+		if (ParamUtil.isNullOrEmpty(pass)) {
 			return "login";
-		}if(ParamUtil.isNullOrEmpty(pass)){
-			return "login";
-		}  	
+		}
 		User user = loginService.login(logid, pass);
 		session.setAttribute("user", user);
-		
-		if(user == null) {		
-			 String errMsg = messageSource.getMessage("select.error", null, Locale.getDefault());
-			 model.addAttribute("msg", errMsg);
-			 return "login";
-		}else{	
+
+		if (user == null) {
+			String errMsg = messageSource.getMessage("select.error", null, Locale.getDefault());
+			model.addAttribute("msg", errMsg);
+			return "login";
+		} else {
 			Integer role = user.getRole();
 			System.out.println(role);
-			
-			if(role == 1) {
+
+			if (role == 1) {
 				List<Products> list = productService.findAll();
-				
+
 				model.addAttribute("productList", list);
-			model.addAttribute("name", user.getName());
-			model.addAttribute("productListnum", list.size());
-			
-//			var tuuti = session.getAttribute("tuuti");
-//			session1.setAttribute("tuuti", tuuti);
-			
-//			List<BuyList> list1 = productService.listAll();
-////			System.out.println(list);
-////			model.addAttribute("productList", list);
-////			
-////			model.addAttribute("productListnum", list.size());
-//			
-//			session1.setAttribute("tuuti", list1.size());
-			
-			return "menu";
+				model.addAttribute("name", user.getName());
+				model.addAttribute("productListnum", list.size());
+
+				return "menu";
 			}
 			List<Products> list = productService.findAll();
-//			System.out.println("menu2");
+
 			model.addAttribute("productList", list);
 			model.addAttribute("name", user.getName());
-			
+
 			model.addAttribute("productListnum", list.size());
 			return "menu2";
-		}      
-    }
-	
-	@RequestMapping(value = "/login", params = "insert", method = RequestMethod.GET)
-    public String resultLoginInsert(@Validated@ModelAttribute("login") LoginForm form, BindingResult bindingResult, Model model) {
-		String logid = form.getLogId();
-    	String pass = form.getPass();
-    	
-    	if (ParamUtil.isNullOrEmpty(logid) && ParamUtil.isNullOrEmpty(pass)) {		
-			return "login";			
-		}else if(ParamUtil.isNullOrEmpty(logid)) {
-			return "login";
-		}if(ParamUtil.isNullOrEmpty(pass)){
-			return "login";
-		} 
-		
-		loginService.logininsert(logid, pass);
-		
-		model.addAttribute("msg", "登録完了");
-				
-		return "login";
-		
+		}
 	}
-	
+
+	@RequestMapping(value = "/login", params = "insert", method = RequestMethod.GET)
+	public String resultLoginInsert(@Validated @ModelAttribute("login") LoginForm form, BindingResult bindingResult,
+			Model model) {
+		String logid = form.getLogId();
+		String pass = form.getPass();
+
+		if (ParamUtil.isNullOrEmpty(logid) && ParamUtil.isNullOrEmpty(pass)) {
+			return "login";
+		} else if (ParamUtil.isNullOrEmpty(logid)) {
+			return "login";
+		}
+		if (ParamUtil.isNullOrEmpty(pass)) {
+			return "login";
+		}
+
+		loginService.logininsert(logid, pass);
+
+		model.addAttribute("msg", "登録完了");
+
+		return "login";
+
+	}
+
 }

@@ -2,21 +2,20 @@ package com.example.Enitity;
 
 public class User {
 
-    private String loginId;
-  
+	private String loginId;
 
 	private String password;
-    private String name;
-    private Integer role;
+	private String name;
+	private Integer role;
 
-    public User() {
-    }
+	public User() {
+	}
 
-    public User(String loginId,String password, String name) {
-        this.loginId = loginId;
-        this.password = password;
-        this.name = name;
-    }
+	public User(String loginId, String password, String name) {
+		this.loginId = loginId;
+		this.password = password;
+		this.name = name;
+	}
 
 	public String getLoginId() {
 		return loginId;
@@ -41,13 +40,13 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	  public Integer getRole() {
-			return role;
-		}
 
-		public void setRole(Integer role) {
-			this.role = role;
-		}
-   
+	public Integer getRole() {
+		return role;
+	}
+
+	public void setRole(Integer role) {
+		this.role = role;
+	}
+
 }
