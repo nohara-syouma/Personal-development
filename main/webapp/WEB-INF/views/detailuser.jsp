@@ -43,23 +43,23 @@
           <p class="error">エラーメッセージ</p>
           <div>
             <label>商品ID</label>
-            <form:input type="text" path="productId"  class="base-text"/>
+            <form:input type="text" path="productId"  readonly="true" class="base-text"/>
           </div>
           <div>
             <label>商品名</label>
-            <form:input type="text" path="name" value="${ productdetail.name }" class="base-text"/>
+            <form:input type="text" path="name" value="${ productdetail.name }"  readonly="true" class="base-text"/>
           </div>
           <div>
             <label>単価</label>
-            <form:input type="text" path="price" value="${ productdetail.price }" class="base-text"/>
+            <form:input type="text" path="price" value="${ productdetail.price }"  readonly="true" class="base-text"/>
           </div>
           <div>
             <label>カテゴリ</label>
-            <form:input type="text" path="categoryId" value="${ productdetail.categoryId }" class="base-text"/>
+            <form:input type="text" path="categoryId" value="${ productdetail.categoryId }" readonly="true" class="base-text"/>
           </div>
           <div>
             <label>画像</label>
-            <form:input type="text" path="img" value="${ productdetail.img }" class="base-text"/>
+            <form:input type="text" path="img" value="${ productdetail.img }" readonly="true" class="base-text"/>
           </div>
           <div>
             <label>商品説明</label>

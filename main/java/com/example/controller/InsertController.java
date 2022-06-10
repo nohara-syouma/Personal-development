@@ -74,6 +74,7 @@ public class InsertController {
 		Products products = productService.findid(form.getProductId());
 		
 		model.addAttribute("productdetail", products);
+		
 		return "detail";
 	}
 	
@@ -84,6 +85,7 @@ public class InsertController {
 		Products products = productService.findid(form.getProductId());
 		
 		model.addAttribute("productdetail", products);
+		
 		return "detailuser";
 	}
 	
@@ -101,6 +103,7 @@ public class InsertController {
 		List<BuyList> list = productService.finduserlist();
 		System.out.println(list);
 		model.addAttribute("productList", list);
+		model.addAttribute("productListnum", list.size());
 		return "buylist";
 
 	}
@@ -121,6 +124,7 @@ public class InsertController {
 		List<BuyList> list = productService.finduserlist();
 		System.out.println(list);
 		model.addAttribute("productList", list);
+		model.addAttribute("productListnum", list.size());
 		return "buylist2";
 
 	}

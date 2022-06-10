@@ -63,9 +63,8 @@
           </div>
           <div>
             <label>商品説明</label>
-            <textarea name="description" readonly class="base-text" style="background-color: rgb(209, 209, 209);">
-ゼブラ株式会社
-線の太さ：太6.0mm、細1.5～2.0mm
+            <textarea name="description" class="base-text" style="background-color: rgb(209, 209, 209);">
+
             </textarea>
           </div>
         </fieldset>

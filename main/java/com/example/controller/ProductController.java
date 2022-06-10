@@ -36,6 +36,12 @@ public class ProductController {
 	
 	@Autowired
 	HttpSession session;
+	
+//	@Autowired
+//	HttpSession session1;
+//	
+//	@Autowired
+//	HttpSession session2;
 
 	@RequestMapping("/menu")
 	public String search(@ModelAttribute("search")String key, Model model) {
@@ -43,6 +49,7 @@ public class ProductController {
 		List<Products> list = productService.findAll();
 		
 		model.addAttribute("productList", list);
+		model.addAttribute("productListnum", list.size());
 
 		return "menu";
 	}
@@ -53,6 +60,8 @@ public class ProductController {
 		List<Products> list = productService.findAll();
 		
 		model.addAttribute("productList", list);
+		
+		model.addAttribute("productListnum", list.size());
 
 		return "menu2";
 	}
@@ -63,6 +72,8 @@ public class ProductController {
 		List<BuyList> list = productService.finduserlist();
 		System.out.println(list);
 		model.addAttribute("productList", list);
+		
+		model.addAttribute("productListnum", list.size());
 
 		return "buylist";
 	}
@@ -73,8 +84,36 @@ public class ProductController {
 		List<BuyList> list = productService.finduserlist();
 		System.out.println(list);
 		model.addAttribute("productList", list);
+		
+		model.addAttribute("productListnum", list.size());
 
 		return "buylist2";
+	}
+	
+//	@RequestMapping("/notification")
+//	public String notification(@ModelAttribute("detail")BuyListForm form, Model model) {
+//		
+//		List<BuyList> list = productService.finduserlist();
+//		System.out.println(list);
+//		model.addAttribute("productList", list);
+//
+//		return "notification";
+//	}
+	
+	@RequestMapping(value="/notification")
+	public String notification(@ModelAttribute("detail") BuyListForm form,Model model) {
+		
+		List<BuyList> list = productService.listAll();
+		System.out.println(list);
+		model.addAttribute("productList", list);
+		
+		model.addAttribute("productListnum", list.size());
+		
+//		session1.invalidate();
+		
+//		session2.setAttribute("tuuti2", list.size());
+		
+		return "notification";
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
@@ -113,6 +152,7 @@ public class ProductController {
 				List<Products> list = productService.findAll();
 				
 				model.addAttribute("productList", list);
+				model.addAttribute("productListnum", list.size());
 		 
 		 	return "menu";
 		 
@@ -142,6 +182,8 @@ public class ProductController {
 				List<Products> list = productService.findAll();
 				
 				model.addAttribute("productList", list);
+				
+				model.addAttribute("productListnum", list.size());
 		 
 		 	return "menu";
 		 

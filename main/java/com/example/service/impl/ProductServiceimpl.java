@@ -47,4 +47,9 @@ public class ProductServiceimpl implements ProductService{
         return productDao.finduserlist();
     }
 	
+	@Override
+	public List<BuyList> listAll() {
+        return productDao.listAll();
+    }
+	
 }

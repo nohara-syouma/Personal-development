@@ -29,6 +29,8 @@ public class PgProductDao implements ProductDao{
 	 
 	 private static final String SQL_SELECT_USER = "SELECT * FROM list WHERE username = :username";
 	 
+	 private static final String LISTALL = "SELECT * FROM list";
+	 
 	 private static final String DELETE = "DELETE FROM products WHERE product_id = :product_id";
 	 
 	 private static final String UPDATE = "UPDATE products SET category_id = :category_id, name = :name, price = :price, img = :img WHERE product_id = :product_id";
@@ -43,6 +45,11 @@ public class PgProductDao implements ProductDao{
 	 public List<Products> findAll() {
 	       String sql = SELECT_ALL + ORDER_BY;
 	       return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Products>(Products.class));
+	    }
+	 @Override
+	 public List<BuyList> listAll() {
+	       String sql = LISTALL + ORDER_BY;
+	       return jdbcTemplate.query(sql, new BeanPropertyRowMapper<BuyList>(BuyList.class));
 	    }
 	 
 	 @Override

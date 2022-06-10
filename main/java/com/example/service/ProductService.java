@@ -18,5 +18,7 @@ public interface ProductService {
 	public int update(Products products);
 	
 	public List<BuyList> finduserlist();
+	
+	public List<BuyList> listAll();
 
 }

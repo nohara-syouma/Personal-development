@@ -34,6 +34,12 @@ public class LoginController {
 	 @Autowired
 	 HttpSession session;  
 	 
+//	 @Autowired
+//	 HttpSession session1;
+//	 
+//	 @Autowired
+//	 HttpSession session2;
+	 
 	 @Autowired
 		ProductService productService;
 	 
@@ -80,12 +86,27 @@ public class LoginController {
 				
 				model.addAttribute("productList", list);
 			model.addAttribute("name", user.getName());
+			model.addAttribute("productListnum", list.size());
+			
+//			var tuuti = session.getAttribute("tuuti");
+//			session1.setAttribute("tuuti", tuuti);
+			
+//			List<BuyList> list1 = productService.listAll();
+////			System.out.println(list);
+////			model.addAttribute("productList", list);
+////			
+////			model.addAttribute("productListnum", list.size());
+//			
+//			session1.setAttribute("tuuti", list1.size());
+			
 			return "menu";
 			}
 			List<Products> list = productService.findAll();
 //			System.out.println("menu2");
 			model.addAttribute("productList", list);
 			model.addAttribute("name", user.getName());
+			
+			model.addAttribute("productListnum", list.size());
 			return "menu2";
 		}      
     }

@@ -47,7 +47,7 @@
         <fieldset class="label-130">
           <div>
             <label class="required">商品ID</label>
-            <form:input type="text" path="productId" class="base-text"/>
+            <form:input type="text" path="productId"  class="base-text"/>
             <span class="error"><form:errors path="productId" cssStyle="color: red"/></span>
           </div>
           <div>
@@ -63,11 +63,11 @@
           <div class="select_block">
             <label class="required">カテゴリ</label>
             <form:select path="categoryId" class="base-text">
-              <option value="1">筆記具</option>
-              <option value="2">紙製品</option>
-              <option value="3">事務消耗品</option>
-              <option value="4">オフィス機器</option>
-              <option value="5">雑貨</option>
+              <option value="1">バレル</option>
+              <option value="2">フライト</option>
+              <option value="3">ティップ</option>
+              <option value="4">ケース</option>
+              <option value="5">ボード</option>
             </form:select>
           </div>
           <div>
@@ -76,7 +76,7 @@
           </div>
           <div>
             <label>画像</label>
-            <form:input type="text" path="img"/>
+            <form:input type="file" path="img"/>
             <span class="error">エラーメッセージ</span>
           </div>
         </fieldset>
